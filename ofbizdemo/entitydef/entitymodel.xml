@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/entitymodel.xsd">
+
+        <title>Entity of an Open For Business Project Component</title>
+        <description>None</description>
+        <version>1.0</version>
+
+        <entity entity-name="OfbizDemoType" package-name="org.apache.ofbiz.ofbizdemo" title="OFBiz Demo Type Entity">
+            <field name="ofbizDemoTypeId" type="id"><description>primary sequenced ID</description></field>
+            <field name="description" type="description"/>
+            <prim-key field="ofbizDemoTypeId"/>
+        </entity>
+
+        <entity entity-name="OfbizDemo" package-name="org.apache.ofbiz.ofbizdemo" title="OFBiz Demo Entity">
+            <field name="ofbizDemoId" type="id"><description>Primary Sequenced ID</description></field>
+            <field name="ofbizDemoTypeId" type="id"/>
+            <field name="firstName" type="name"/>
+            <field name="lastName" type="name"/>
+            <field name="comments" type="comment"/>
+            <prim-key field="ofbizDemoId"/>
+            <relation type="one" fk-name="ODEM_OD_TYPE_ID" rel-entity-name="OfbizDemoType">
+                <key-map field-name="ofbizDemoTypeId"/>
+            </relation>
+        </entity>
+    <entity entity-name="PartyTypeDemo" package-name="org.apache.ofbiz.ofbizdemo" title="ofbiz demo party type entity">
+        <field name="PartyTypeIdd" type="id">
+            <description>primary seq id</description>
+        </field>
+        <prim-key field="PartyTypeIdd"/>
+    </entity>
+    <entity entity-name="PartyDemo" package-name="org.apache.ofbiz.ofbizdemo" title="ofbiz demo party entity">
+        <field name="PartyIdd" type="id"/>
+        <field name="Fname" type="name"/>
+        <field name="Lname" type="name"/>
+        <field name="PartyTypeIdd" type="id"/>
+        <prim-key field="PartyIdd"/>
+        <relation type="one" fk-name="PartyTypeIdd" rel-entity-name="PartyTypeDemo">
+            <key-map field-name="PartyTypeIdd"/>
+        </relation>
+    </entity>
+    <entity entity-name="RoleTypeP" package-name="org.apache.ofbiz.ofbizdemo">
+        <field name ='roleTypeId' type ="Id"><description> primary id </description></field>
+        <field name = "parentTypeId" type="Id"/>
+        <prim-key field ='roleTypeId'/>
+    </entity>
+</entitymodel>
